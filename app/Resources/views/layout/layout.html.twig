@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Ecommerce Fruits & legumes {% endblock %}</title>
+        <meta name="keywords" content="{% block motsCles %} {% endblock %}" />
+        <meta name="description" content="{% block description %} {% endblock %}" />
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-responsive.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" />
+
+
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <button class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse" type="button">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="{{ path('produits') }}"><img src="{{ asset('uploads/logo-new2.png')}}"/></a>
+                <div class="nav-collapse collapse">
+                    {% render(controller('EcommerceBundle:Produits:recherche')) %}
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% block body %}{% endblock %}
+
+<hr />
+
+<footer id="footer" class="vspace20">
+
+    <div class="container" >
+        <div class="row">
+            <div class="span2">
+                <h1>62</h1>
+                <p>Fournisseurs
+                    nous livrent chaque jour</p>
+               </div>
+            <div class="span2">
+                <h1>1/2</h1>
+                <p>Journée de stock
+                    que du frais</p>
+            </div>
+            <div class="span2">
+                <h1>100%</h1>
+                <p>Contrôle
+                    qualités des produits</p>
+            </div>
+            <div class="span2">
+                <h1>3000</h1>
+                <p>Produits frais
+                    et 1200 références bio</p>
+            </div>
+            <div class="span2">
+                <li>
+
+                <img src="/ecommerce_olds/web/uploads/badge-rungis.png" alt="" ></li>
+            </div>
+    </div>
+    <hr/>
+    <div class="container">
+        <div class="row">
+            <div class="span6">
+                <h4>Offres fidélité (cumulables)</h4>
+
+                <p> - Livraison hebdomadaire : Si une nouvelle livraison intervient en moins de 8 jours, vous bénéficiez d’une réduction de 5% sur la seconde commande
+                  </p><p>  - A partir de 300€ de commandes en 30 jours glissants, vous bénéficiez d’une réduction de 5% sur votre prochaine commande</p>
+            </div>
+            <div class="span6">
+                <h4>Offre parrainage</h4>
+
+                <p> Parrainez vos amis, dès qu’ils deviennent clients vous bénéficiez de 10% de réduction sur votre prochaine commande</p> </div>
+
+            </div>
+        </div>
+    <hr/>
+    <div class="container">
+        <div class="row">
+            <div class="span4">
+                <h4>Acheter en ligne</h4>
+                <ul class="nav nav-stacked">
+                    <li><a href="#">Politique d’achat</a>
+                    <li><a href="#">La confiance partagée</a>
+                    <li><a href="#">Hygiène et sécurité</a>
+                    <li><a href="#">Le juste poids</a>
+                    <li><a href="#">Le paiement</a>
+                </ul>
+            </div>
+
+            <div class="span4">
+                <h4>Nous contacter</h4>
+
+                <p><i class="icon-map-marker"></i>&nbsp; {{ adresse }}</p>
+                <p><i class="icon-phone"></i>&nbsp;Phone: {{telephone}}</p>
+                <p><i class="icon-print"></i>&nbsp;Fax: {{ fax }}</p>
+                <p><i class="icon-envelope"></i>&nbsp;Email: {{ email }}</p>
+                <p><i class="icon-globe"></i>&nbsp;Web: {{ web }}</p>
+            </div>
+
+            <div class="span4">
+                <h4>Newsletter</h4>
+                <p></p>
+                <form class="form-newsletter">
+                    <div class="input-append">
+                        <input type="email" class="span2" placeholder="votre email">
+                        <button type="submit" class="btn">Suivier</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span6">
+                <p>&copy; Copyright {{ "now" | date('Y')}} - mon-marché.tn</p>
+            </div>
+            <div class="span6">
+                <a class="pull-right" href="http://moezseddik.eu.pn" target="_blank">credits by MoeZ seddik</a>
+            </div>
+
+        </div>
+    </div>
+        </div>
+</footer>
+<script src="{{ asset('js/jquery-1.10.0.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.js') }}"></script>
+
+    <script src="{{ asset('js/bootstrap-carousel.js') }}"></script>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

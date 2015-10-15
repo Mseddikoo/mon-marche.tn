@@ -1,0 +1,40 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <div class="container">
+
+
+        <div class="row">
+
+            <div class="span3">
+                {% include '::modulesUsed/navigation.html.twig' %}
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% include 'UtilisateursBundle:Default:modulesUsed/utilisateursConnecte.html.twig' %}
+                {% else %}
+                    {% include 'UtilisateursBundle:Default:modulesUsed/utilisateurs.html.twig' %}
+                {% endif %}
+                {% render(controller('EcommerceBundle:Panier:menu')) %}
+
+                {% include 'EcommerceBundle:Default:produits/modulesUsed/Livraison.html.twig' %}
+                {% include 'EcommerceBundle:Default:produits/modulesUsed/Paiement.html.twig' %}
+                {% include 'EcommerceBundle:Default:produits/modulesUsed/Service_client.html.twig' %}
+            </div>
+            <div class="span9">
+
+                <!-- Controls -->
+
+
+                <div class="well">
+                    <div class="well well-small">
+                        <h1> Service client </h1>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    </div>
+{% endblock %}

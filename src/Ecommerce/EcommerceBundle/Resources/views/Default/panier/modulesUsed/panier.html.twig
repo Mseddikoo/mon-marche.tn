@@ -1,0 +1,44 @@
+{% set totalHT = 0 %}
+{% set totalTTC = 0 %}
+{% set refTva = {} %}
+{% for produit in produits %}
+    {% set refTva = refTva|merge({ ('%' ~ produit.tva.valeur) : 0 }) %}
+{% endfor %}
+<div class="well">
+    <div class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+
+            {% if articles == 0 %}
+                <i class="icon-shopping-cart"></i>  Aucun article dans votre panier
+            {% elseif articles ==  1 %}
+                <i class="icon-shopping-cart"></i> <span class="badge badge-info">1</span> article dans votre panier
+            {% else %}
+                <i class="icon-shopping-cart"></i> <span
+                    class="badge badge-info">  {{ articles }} </span> articles  dans votre panier
+            {% endif %}
+
+            <b class="caret"></b></a>
+        </a>
+        <div class="dropdown-menu well" role="menu" aria-labelledby="dLabel">
+            {% for produit in produits %}
+                <p>{{ produit.nom }}
+                    <span class="pull-right">
+                        {{ produit.prix }} X {{ panier[produit.id] }}  €
+                    </span>
+
+                    <a href="{{ path('supprimer', { 'id' : produit.id}) }}"><i class="icon-trash"></i></a>
+                </p>
+                {% set totalHT = totalHT + (produit.prix * panier[produit.id]) %}
+                {% set totalTTC = totalTTC + (produit.prix * panier[produit.id])|tva(produit.tva.multiplicate) %}
+                {% set refTva = refTva|merge({('%' ~ produit.tva.valeur): refTva['%' ~ produit.tva.valeur] + (produit.prix * panier[produit.id])|montantTva(produit.tva.multiplicate) }) %}
+            {% endfor %}
+            {% if produits|length != 0 %}
+                <dl class="dl-horizontal pull-right">
+
+                    <dt>Total: {{ totalTTC }} €</dt>
+                </dl>
+            {% endif %}
+            <a href="{{ path('panier') }}" class="btn btn-primary">Mon Panier</a>
+        </div>
+    </div>
+</div>

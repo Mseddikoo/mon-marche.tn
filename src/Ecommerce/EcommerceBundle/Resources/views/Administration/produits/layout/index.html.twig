@@ -1,0 +1,39 @@
+{% extends '::layout/layoutAdmin.html.twig' %}
+
+{% block body -%}
+    <h1>Liste des produits </h1>
+
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Disponible</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.nom }}</td>
+                <td><i>{{ entity.prix }} € / kg</i></td>
+                <td>{{ entity.disponible }}</td>
+                <td>
+
+                    <a href="{{ path('adminProduits_show', { 'id': entity.id }) }}" class="icon-book"></a>
+                    <a href="{{ path('adminProduits_edit', { 'id': entity.id }) }}" class="icon-edit"></a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a class=" btn btn-success" href="{{ path('adminProduits_new') }}">
+                nouvelle produit
+            </a>
+        </li>
+    </ul>
+{% endblock %}

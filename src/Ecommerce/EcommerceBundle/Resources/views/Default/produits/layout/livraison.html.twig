@@ -1,0 +1,52 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <div class="container">
+
+
+        <div class="row">
+
+            <div class="span3">
+                {% include '::modulesUsed/navigation.html.twig' %}
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% include 'UtilisateursBundle:Default:modulesUsed/utilisateursConnecte.html.twig' %}
+                {% else %}
+                    {% include 'UtilisateursBundle:Default:modulesUsed/utilisateurs.html.twig' %}
+                {% endif %}
+                {% render(controller('EcommerceBundle:Panier:menu')) %}
+
+                {% include 'EcommerceBundle:Default:produits/modulesUsed/Livraison.html.twig' %}
+                {% include 'EcommerceBundle:Default:produits/modulesUsed/Paiement.html.twig' %}
+                {% include 'EcommerceBundle:Default:produits/modulesUsed/Service_client.html.twig' %}
+            </div>
+            <div class="span9">
+
+                <!-- Controls -->
+
+
+                <div class="well">
+                    <div class="well well-small">
+                        <h1>Livraisons </h1>
+
+                        mon-marche.tn livre toutes les zones du grand Tunis, suivant le créneau horaire choisi par le
+                        client. Le client devra être présent à son domicile afin de réceptionner sa commande.
+
+                        Le livreur présentera une facture au client qui devra la signer et régler le montant de sa
+                        commande suivant le mode de paiement qu'il a choisi.
+
+                        En cas de paiement par chèque, le client devra présenter lui même une pièce d'identité ainsi
+                        qu'un chèque à son nom sous l'ordre de la STCD.
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+    </div>
+
+    </div>
+{% endblock %}

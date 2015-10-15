@@ -1,0 +1,18 @@
+<div class="span3">
+    <div class="well">
+        <div class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="icon-shopping-cart"></i>
+                {{  }} item - 54,27 €
+                <b class="caret"></b></a>
+            </a>
+            <div class="dropdown-menu well" role="menu" aria-labelledby="dLabel">
+                {% for produit in produits %}
+                <p>{{produit.nom}} <span class="pull-right">{{ produit.prix * panier[produit.id] }} €</span><a href="{{ path('supprimer', { 'id' : produit.id}) }}"><i class="icon-trash"></i></a></p>
+                <a href="panier.php" class="btn btn-primary">Mon Panier</a>
+            </div>
+        </div>
+    </div>
+
+    
+</div>

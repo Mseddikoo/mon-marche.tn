@@ -1,0 +1,51 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <div class="container">
+
+
+        <div class="row">
+
+            <div class="span3">
+                {% include '::modulesUsed/navigation.html.twig' %}
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% include 'UtilisateursBundle:Default:modulesUsed/utilisateursConnecte.html.twig' %}
+                {% else %}
+                    {% include 'UtilisateursBundle:Default:modulesUsed/utilisateurs.html.twig' %}
+                {% endif %}
+                {% render(controller('EcommerceBundle:Panier:menu')) %}
+
+                {% include 'EcommerceBundle:Default:produits/modulesUsed/Livraison.html.twig' %}
+                {% include 'EcommerceBundle:Default:produits/modulesUsed/Paiement.html.twig' %}
+                {% include 'EcommerceBundle:Default:produits/modulesUsed/Service_client.html.twig' %}
+            </div>
+            <div class="span9">
+
+                <!-- Controls -->
+
+                <div class="well">
+                    <div class="well well-small">
+                        <h1>Paiement securise </h1>
+                        Notre offre de paiement sécurisé
+                        mon-marche.tn offre à ses clients trois modes de paiement:
+
+                        1/ Le paiement en espèces à la réception de la commande, le client devra s'acquiter à la
+                        réception de sa commande du montant exacte de la facture.
+
+                        2/ Le paiement par chèque à la livraison: Le client devra se présenter lui même muni de sa pièce
+                        d'identité ainsi que d'un chèque à son propre nom.
+
+                        3/ Le paiement sécurisé par carte bancaire à la finalisation de la commande sur le site
+                        www.epicerie.tn
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    </div>
+{% endblock %}

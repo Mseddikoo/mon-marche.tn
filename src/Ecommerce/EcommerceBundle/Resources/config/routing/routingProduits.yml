@@ -1,0 +1,32 @@
+produits:
+    path:     /
+    defaults: { _controller: EcommerceBundle:Produits:produits }
+
+infolivraison:
+    path:     /livraison/info
+    defaults: { _controller: EcommerceBundle:Produits:livraisoninfo }
+
+infoserviceClient:
+    path:     /serviceClient/info
+    defaults: { _controller: EcommerceBundle:Produits:serviceClientinfo }
+
+infopaiement:
+    path:     /produit/info
+    defaults: { _controller: EcommerceBundle:Produits:paiementinfo }
+
+presentation:
+    path:     /produit/{id}
+    defaults: { _controller: EcommerceBundle:Produits:presentation }
+
+   
+test:
+    path:     /test
+    defaults: { _controller: EcommerceBundle:Test:testFormulaire }
+    
+categorieProduits:
+    path:     /categorie/{categorie}
+    defaults: { _controller: EcommerceBundle:Produits:produits }
+    
+rechercheProduits:
+    path:     /recherche
+    defaults: { _controller: EcommerceBundle:Produits:rechercheTraitement }

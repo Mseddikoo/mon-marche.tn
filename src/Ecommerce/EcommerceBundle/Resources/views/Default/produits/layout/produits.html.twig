@@ -1,0 +1,93 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <div class="container">
+
+
+        <div class="row">
+
+            <div class="span3">
+                {% include '::modulesUsed/navigation.html.twig' %}
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% include 'UtilisateursBundle:Default:modulesUsed/utilisateursConnecte.html.twig' %}
+                {% else %}
+                    {% include 'UtilisateursBundle:Default:modulesUsed/utilisateurs.html.twig' %}
+                {% endif %}
+                {% render(controller('EcommerceBundle:Panier:menu')) %}
+
+                {% include 'EcommerceBundle:Default:produits/modulesUsed/Livraison.html.twig' %}
+                {% include 'EcommerceBundle:Default:produits/modulesUsed/Paiement.html.twig' %}
+                {% include 'EcommerceBundle:Default:produits/modulesUsed/Service_client.html.twig' %}
+            </div>
+            <div class="span9">
+
+                <div class="bs-docs-example">
+                    <div id="myCarousel" class="carousel slide">
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img src="/ecommerce_olds/web/uploads/slide1.jpg" alt="">
+
+                            </div>
+                            <div class="item">
+                                <img src="/ecommerce_olds/web/uploads/slide2.jpg" alt="">
+
+                            </div>
+                            <div class="item">
+                                <img src="/ecommerce_olds/web/uploads/slide3.jpg" alt="">
+
+                            </div>
+                        </div>
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                    </div>
+                </div>
+
+
+                <!-- Controls -->
+
+
+                {% if produits| length != 0 %}
+                    <ul class="thumbnails">
+                        {% for produit in produits %}
+                            <li class="span3">
+                                <div class="thumbnail">
+                                    <img src="{{ asset(produit.image.AssetPath) }}" alt="{{ produit.image.name }}"
+                                         width="250" height="250">
+
+                                    <div class="caption">
+                                        <h4>{{ produit.nom }}</h4>
+
+                                        <p>{{ produit.prix | tva(produit.tva.multiplicate) }} €</p>
+                                        <a class="btn btn-primary"
+                                           href="{{ path ('presentation', {'id' : produit.id }) }}">Plus d'infos</a>
+                                        {% if panier[produit.id] is not defined %}
+                                            <a class="btn btn-success"
+                                               href="{{ path ('ajouter', {'id' : (produit.id)}) }}">Ajouter au
+                                                panier</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </li>
+
+                        {% endfor %}
+                    </ul>
+
+                    <div class="navigation">
+                        {{ knp_pagination_render(produits) }}
+                    </div>
+
+
+                {% else %}
+                    Aucun produit
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    </div>
+{% endblock %}
