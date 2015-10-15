@@ -13,7 +13,7 @@ Code source du boutique en ligne.
 <hr/>
 Vous avez deux solutions pour le faire :
 
-Via Git, en clonant ce dépôt ;
+Via Git, en clonant ce dépôt ; <br>
 Via le téléchargement du code source en une archive ZIP, à cette adresse : https://github.com/Mseddikoo/mon-marche/archive/master.zip
 <h2>2. Définir vos paramètres d'application</h2>
 <hr/>
