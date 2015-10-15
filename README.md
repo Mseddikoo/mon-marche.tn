@@ -14,7 +14,7 @@ Code source du boutique en ligne.
 Vous avez deux solutions pour le faire :
 
 Via Git, en clonant ce dépôt ; <br>
-Via le téléchargement du code source en une archive ZIP, à cette adresse : https://github.com/Mseddikoo/mon-marche/archive/master.zip
+Via le téléchargement du code source en une archive ZIP, à cette adresse : https://github.com/Mseddikoo/mon-marche.tn/archive/master.zip
 <h2>2. Définir vos paramètres d'application</h2>
 <hr/>
 Pour ne pas qu'on se partage tous nos mots de passe, le fichier app/config/parameters.yml est ignoré dans ce dépôt. A la place, vous avez le fichier parameters.yml.dist que vous devez renommer (enlevez le .dist) et modifier.
